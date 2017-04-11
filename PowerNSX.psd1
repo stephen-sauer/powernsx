@@ -31,7 +31,7 @@ has its own license that is located in the source code of the respective compone
 RootModule = 'PowerNSX.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.0.0'
+ModuleVersion = '2.1.0'
 
 # ID used to uniquely identify this module
 GUID = 'ea3b0bdc-83a3-4cae-9920-7257beae8614'
@@ -73,12 +73,9 @@ DotNetFrameworkVersion = '4.0'
 # Modules that must be imported into the global environment prior to importing this module
 # This REQUIRES that PowerCLI v6 be installed (v5 was snapin based).  This will
 # autoload these modules when powernsx loads.  If v5 PowerCLI support is required, these
-# will have to be removed manually. 
+# will have to be removed manually.
  RequiredModules = @(
-
-    "VMware.VimAutomation.Common",
-    "VMware.VimAutomation.Core",
-    "VMware.VimAutomation.Vds"
+     #Better module autoload handling in module init function.
 )
 
 # Assemblies that must be loaded prior to importing this module
@@ -116,6 +113,7 @@ FunctionsToExport = @(
     'Get-NsxController',
     'New-NsxIpPool',
     'Get-NsxIpPool',
+    'Remove-NsxIpPool'
     'Get-NsxVdsContext',
     'New-NsxVdsContext',
     'Remove-NsxVdsContext',
@@ -287,7 +285,7 @@ FunctionsToExport = @(
     'Remove-NsxLoadBalancerVip',
     'Get-NsxSecurityPolicy',
     'Remove-NsxSecurityPolicy',
-    'Get-NsxSecurityGroupEffectiveMembers',
+    'Get-NsxSecurityGroupEffectiveMember',
     'Find-NsxWhereVMUsed',
     'Get-NsxBackingPortGroup',
     'Get-NsxBackingDVSwitch',
@@ -298,11 +296,14 @@ FunctionsToExport = @(
     'Get-NsxManagerSsoConfig',
     'Get-NsxManagerVcenterConfig',
     'Get-NsxManagerTimeSettings',
+    'Set-NsxManagerTimeSettings',
+    'Clear-NsxManagerTimeSettings',
     'Get-NsxManagerSyslogServer',
     'Get-NsxManagerNetwork',
     'Get-NsxManagerBackup',
     'Get-NsxManagerComponentSummary',
     'Get-NsxManagerSystemSummary',
+    'Get-NsxManagerCertificate',
     'New-NsxServiceGroup',
     'Add-NsxServiceGroupMember',
     'Get-NsxServiceGroup',
@@ -314,7 +315,24 @@ FunctionsToExport = @(
     'Get-NsxLoadBalancerApplicationRule',
     'Copy-NsxEdge',
     'Export-NsxObject',
-    'Import-NsxObject'
+    'Import-NsxObject',
+    'Connect-NsxLogicalSwitch',
+    'Disconnect-NsxLogicalSwitch',
+    'Get-NsxJobStatus',
+    'Add-NsxLicense',
+    'Get-NsxLicense',
+    'Get-NsxApplicableMember',
+    'Get-NsxSecurityGroupMemberTypes',
+    'Get-NsxSecurityGroupEffectiveVirtualMachine',
+    'Get-NsxSecurityGroupEffectiveIpAddress',
+    'Get-NsxSecurityGroupEffectiveMacAddress',
+    'Get-NsxSecurityGroupEffectiveVnic',
+    'Set-NsxFirewallThreshold',
+    'Get-NsxFirewallThreshold',
+    'Add-NsxIpSetMember',
+    'Remove-NsxIpSetMember',
+    'Get-NsxUserRole',
+    'Invoke-XpathQuery'
 )
 
 # Cmdlets to export from this module
